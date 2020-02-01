@@ -1,7 +1,10 @@
+const dotenv = require('dotenv');
 const express = require('express');
 const morgan = require('morgan');
 const routes = require('./routes');
 const helmet = require('helmet');
+
+dotenv.config();
 
 const { PORT = 8001, HOSTNAME = 'localhost' } = process.env;
 
