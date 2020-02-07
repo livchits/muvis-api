@@ -19,3 +19,12 @@ function addMovie(db, movie) {
     console.error(validate.errors);
   }
 }
+
+function getMovies() {
+  const movies = createDb()
+    .read()
+    .get('movies')
+    .value(); //devuelve el array
+  //const movies = createDb().read().get('movies'); //devuelve un lodash wrapper
+  return movies;
+}
