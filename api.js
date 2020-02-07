@@ -8,12 +8,17 @@ const { API_KEY } = process.env;
 
 const movies = [];
 
-async function getMovies(page) {
+async function getMovies(page, array) {
   try {
-    const { results } = await got(`${BASE_URL}${API_KEY}&language=en-US&page=${page}`);
+    if (array.length < 100) {
+      const { body } = await got(`${BASE_URL}${API_KEY}&page=${page}`, {
+        responseType: 'json'
+      });
+      array = array.concat(body.results);
+      return getMovies(page++, array);
+    }
+    return array;
   } catch (error) {
     console.log(error.response.body);
   }
 }
-
-//api_key=15a4898f026589678060ac18735a6d7a&language=en-US&page=1
