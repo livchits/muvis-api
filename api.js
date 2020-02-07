@@ -34,3 +34,12 @@ async function getGenres() {
     console.log(error.response.body);
   }
 }
+
+async function queryApi(...requests) {
+  try {
+    const responses = await Promise.all(requests);
+    return responses;
+  } catch (error) {
+    console.log(error.message);
+  }
+}
