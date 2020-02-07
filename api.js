@@ -43,3 +43,5 @@ async function queryApi(...requests) {
     console.log(error.message);
   }
 }
+
+module.exports = { getMovies, getGenres, queryApi };
