@@ -28,3 +28,5 @@ function getMovies() {
   //const movies = createDb().read().get('movies'); //devuelve un lodash wrapper
   return movies;
 }
+
+module.exports = { createDb, addMovie, getMovies };
