@@ -22,3 +22,14 @@ async function getMovies(page, array) {
     console.log(error.response.body);
   }
 }
+
+async function getGenres() {
+  try {
+    const { body } = await got(`${GENRES_URL}${API_KEY}`, {
+      responseType: 'json'
+    });
+    return body.genres;
+  } catch (error) {
+    console.log(error.response.body);
+  }
+}
