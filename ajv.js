@@ -38,3 +38,5 @@ function isValidDate(date) {
     })
   );
 }
+
+const validate = ajv.addFormat('date', { validate: dateString => isValidDate(dateString) }).compile(schema);
