@@ -1,5 +1,6 @@
 const low = require('lowdb');
 const FileSync = require('lowdb/adapters/FileSync');
+const validate = require('./ajv');
 
 function createDb() {
   const adapter = new FileSync('movies.json');
