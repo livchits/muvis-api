@@ -1,15 +1,13 @@
 const got = require('got');
 
-const BASE_URL = 'https://api.themoviedb.org/3/movie/top_rated?api_key=';
-const GENRES_URL = 'https://api.themoviedb.org/3/genre/movie/list?api_key=';
-const { API_KEY } = process.env;
+const { API_KEY, TOP_RATED_URL, GENRES_URL } = process.env;
 
 const movies = [];
 
 async function getMovies(page, array) {
   try {
     if (array.length < 100) {
-      const { body } = await got(`${BASE_URL}${API_KEY}&page=${page}`, {
+      const { body } = await got(`${TOP_RATED_URL}${API_KEY}&page=${page}`, {
         responseType: 'json'
       });
       array = array.concat(body.results);
