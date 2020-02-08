@@ -11,13 +11,11 @@ function selectMoviesData(movies) {
       vote_average: rate
     } = movie;
 
-    const formatedDate = formatDate(date);
-
     return {
       id,
       title,
       overview,
-      date: formatedDate,
+      date: formatDate(date),
       genres,
       poster: `https://image.tmdb.org/t/p/w1280${poster}`,
       backdrop: `https://image.tmdb.org/t/p/w1280${backdrop}`,
@@ -26,4 +24,11 @@ function selectMoviesData(movies) {
   });
 
   return dataSelected;
+}
+
+function formatDate(dateString) {
+  const options = { month: 'long', day: 'numeric', year: 'numeric' };
+  const date = new Date(dateString);
+  const formatedDate = new Intl.DateTimeFormat('en-US', options).format(date);
+  return formatedDate;
 }
