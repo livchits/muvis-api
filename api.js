@@ -1,7 +1,4 @@
-const dotenv = require('dotenv');
 const got = require('got');
-
-dotenv.config();
 
 const BASE_URL = 'https://api.themoviedb.org/3/movie/top_rated?api_key=';
 const GENRES_URL = 'https://api.themoviedb.org/3/genre/movie/list?api_key=';
