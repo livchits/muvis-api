@@ -26,6 +26,8 @@ app.use(helmet());
 
 app.use(express.json());
 
+//app.use(seedDb)
+
 app.use('/api/muvis', routes);
 
 app.listen(PORT, () => console.log(`Server listening on http://${HOSTNAME}:${PORT}`));
