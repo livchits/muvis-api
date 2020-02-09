@@ -51,3 +51,5 @@ function changeGenresIDsforNames(moviesList, genresIdsAndNamesList) {
   });
   return moviesList;
 }
+
+module.exports = { changeGenresIDsforNames, selectMoviesData };
