@@ -2,8 +2,6 @@ const got = require('got');
 
 const { API_KEY, TOP_RATED_URL, GENRES_URL } = process.env;
 
-const movies = [];
-
 async function getMovies(page, array) {
   try {
     if (array.length < 100) {
