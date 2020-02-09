@@ -40,3 +40,4 @@ async function queryApi(...requests) {
 }
 
 module.exports = { getMovies, getGenres, queryApi };
+//module.exports = queryApi(getMovies(1, []), getGenres());
