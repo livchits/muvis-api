@@ -32,12 +32,9 @@ function addMovie(db, { title, date, overview, rate, genres, id }) {
 }
 
 function getMovies() {
-  const movies = createDb()
+  return createDb()
     .read()
-    .get('movies')
-    .value(); //devuelve el array
-  //const movies = createDb().read().get('movies'); //devuelve un lodash wrapper
-  return movies;
+    .get('movies');
 }
 
 module.exports = { createDb, addMovie, getMovies };
