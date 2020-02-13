@@ -11,11 +11,21 @@ function createDb() {
   return db;
 }
 
-function addMovie(db, movie) {
-  if (validate(movie)) {
+function addMovie(db, { title, date, overview, rate, genres, id }) {
+  const newMovie = {
+    title,
+    date,
+    overview,
+    rate: Number(rate),
+    genres,
+    id: id || generateNewId()
+  };
+
+  if (validate(newMovie)) {
     db.get('movies')
-      .push(movie)
+      .push(newMovie)
       .write();
+    return newMovie;
   } else {
     console.error(validate.errors);
   }
