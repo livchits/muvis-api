@@ -37,4 +37,16 @@ function getMovies() {
     .get('movies');
 }
 
+function generateNewId() {
+  const moviesList = getMovies().value();
+
+  const moviesIds = moviesList.reduce((ids, movie) => {
+    ids.push(movie.id);
+    return ids;
+  }, []);
+
+  const newId = Math.max(...moviesIds) + 1;
+  return newId;
+}
+
 module.exports = { createDb, addMovie, getMovies };
