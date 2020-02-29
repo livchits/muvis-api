@@ -45,4 +45,4 @@ function mapIdsToGenres(genresIds, genresIdsAndNamesList) {
   return genresNames;
 }
 
-module.exports = { changeGenresIDsforNames, selectMoviesData };
+module.exports = { selectMoviesData };
