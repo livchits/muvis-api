@@ -26,13 +26,6 @@ function selectMoviesData(movies, genresIdsAndNamesList) {
   return dataSelected;
 }
 
-function formatDate(dateString) {
-  const options = { month: 'long', day: 'numeric', year: 'numeric' };
-  const date = new Date(dateString);
-  const formatedDate = new Intl.DateTimeFormat('en-US', options).format(date);
-  return formatedDate;
-}
-
 function mapIdsToGenres(genresIds, genresIdsAndNamesList) {
   const genresNames = genresIds.map(id => {
     genresIdsAndNamesList.forEach(genre => {
