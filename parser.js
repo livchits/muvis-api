@@ -1,4 +1,4 @@
-function selectMoviesData(movies) {
+function selectMoviesData(movies, genresIdsAndNamesList) {
   const dataSelected = movies.map(movie => {
     const {
       id,
@@ -16,7 +16,7 @@ function selectMoviesData(movies) {
       title,
       overview,
       date: formatDate(date),
-      genres,
+      genres: mapIdsToGenres(genres, genresIdsAndNamesList),
       poster: `https://image.tmdb.org/t/p/w1280${poster}`,
       backdrop: `https://image.tmdb.org/t/p/w1280${backdrop}`,
       rate
@@ -33,23 +33,16 @@ function formatDate(dateString) {
   return formatedDate;
 }
 
-function changeGenresIDsforNames(moviesList, genresIdsAndNamesList) {
-  //itera la lista de películas
-  moviesList.forEach(movie => {
-    //de cada película mapea el array genre_ids
-    const genresNames = movie.genre_ids.map(id => {
-      //se itera la lista de objetos {id: género}
-      genresIdsAndNamesList.forEach(genre => {
-        //si el id es igual al del listado de géneros, le asigna el nombre como valor
-        if (genre.id === id) {
-          id = genre.name;
-        }
-      });
-      return id; //se devuelve el id
+function mapIdsToGenres(genresIds, genresIdsAndNamesList) {
+  const genresNames = genresIds.map(id => {
+    genresIdsAndNamesList.forEach(genre => {
+      if (genre.id === id) {
+        id = genre.name;
+      }
     });
-    movie.genre_ids = genresNames; //se asigna a la propiedad genres_ids de la película el nuevo array
+    return id; //se devuelve el id
   });
-  return moviesList;
+  return genresNames;
 }
 
 module.exports = { changeGenresIDsforNames, selectMoviesData };
