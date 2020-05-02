@@ -1,4 +1,7 @@
 const got = require('got');
+const dotenv = require('dotenv');
+
+dotenv.config();
 
 const { API_KEY, TOP_RATED_URL, GENRES_URL } = process.env;
 
@@ -6,7 +9,7 @@ async function getMovies(page, array) {
   try {
     if (array.length < 100) {
       const { body } = await got(`${TOP_RATED_URL}${API_KEY}&page=${page}`, {
-        responseType: 'json'
+        responseType: 'json',
       });
       array = array.concat(body.results);
       return getMovies(page++, array);
@@ -20,7 +23,7 @@ async function getMovies(page, array) {
 async function getGenres() {
   try {
     const { body } = await got(`${GENRES_URL}${API_KEY}`, {
-      responseType: 'json'
+      responseType: 'json',
     });
     return body.genres;
   } catch (error) {
