@@ -11,21 +11,21 @@ const schema = {
     overview: { type: 'string' },
     date: {
       type: 'string',
-      format: 'date'
+      format: 'date',
     },
     genres: { type: 'array', minItems: 1, items: { type: 'string' } },
     poster: {
       type: 'string',
       format: 'uri-reference',
-      default: 'https://via.placeholder.com/1280x1920.jpg'
+      default: 'https://via.placeholder.com/1280x1920.jpg',
     },
     backdrop: {
       type: 'string',
       format: 'uri-reference',
-      default: 'https://via.placeholder.com/1280x720.jpg'
+      default: 'https://via.placeholder.com/1280x720.jpg',
     },
-    rate: { type: 'number' }
-  }
+    rate: { type: 'number' },
+  },
 };
 
 function isValidDate(date) {
@@ -34,11 +34,13 @@ function isValidDate(date) {
     isValid(dateObject) &&
     isWithinInterval(dateObject, {
       start: new Date(1880, 0, 1),
-      end: new Date()
+      end: new Date(),
     })
   );
 }
 
-const validate = ajv.addFormat('date', { validate: dateString => isValidDate(dateString) }).compile(schema);
+const validate = ajv
+  .addFormat('date', { validate: (dateString) => isValidDate(dateString) })
+  .compile(schema);
 
-module.exports = validate;
+module.exports = { validate, isValidDate };
