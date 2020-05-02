@@ -5,14 +5,14 @@ dotenv.config();
 
 const { API_KEY, TOP_RATED_URL, GENRES_URL } = process.env;
 
-async function getMovies(page, array) {
+async function getApiMovies(page, array) {
   try {
     if (array.length < 100) {
       const { body } = await got(`${TOP_RATED_URL}${API_KEY}&page=${page}`, {
         responseType: 'json',
       });
       array = array.concat(body.results);
-      return getMovies(page++, array);
+      return getApiMovies(page++, array);
     }
     return array;
   } catch (error) {
@@ -40,5 +40,5 @@ async function queryApi(...requests) {
   }
 }
 
-module.exports = { getMovies, getGenres, queryApi };
+module.exports = { getApiMovies, getGenres, queryApi };
 //module.exports = queryApi(getMovies(1, []), getGenres());

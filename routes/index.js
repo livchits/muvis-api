@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const { getMovies } = require('../db');
+const { getApiMovies } = require('../db');
 
 router.get('/', (req, res) => {
-  res.json(getMovies()); //chequear que efectivamente la api devuelva las películas o agregar un .value()
+  res.json(getApiMovies()); //chequear que efectivamente la api devuelva las películas o agregar un .value()
 });
 
 router.route('/:id').get((req, res, next) => {
