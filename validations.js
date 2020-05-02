@@ -1,5 +1,5 @@
 const { isValidDate } = require('./ajv');
-const { check, validationResult } = require('express-validator');
+const { check } = require('express-validator');
 const { capitalize, formatDate } = require('./utils');
 
 const genres = [
@@ -93,3 +93,5 @@ const putValidation = [
     .customSanitizer((value) => value.map((genre) => capitalize(genre)))
     .withMessage('Movie genre is required.'),
 ];
+
+module.exports = { postValidation, putValidation };
