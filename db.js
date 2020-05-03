@@ -38,6 +38,16 @@ function createDb() {
     this.get('movies').remove({ id: id }).write();
   };
 
+  db._.prototype.updateMovie = function (newMovieData, movieToUpdate) {
+    const keysToUpdate = Object.keys(newMovieData); //array de las props a actualizar
+    keysToUpdate.forEach((key) => {
+      this.get('movies')
+        .find({ [key]: movieToUpdate[key] })
+        .assign({ [key]: newMovieData[key] })
+        .write();
+    });
+  };
+
   return db;
 }
 
