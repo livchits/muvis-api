@@ -1,5 +1,3 @@
-const { getMovies } = require('./db');
-
 function generateNewId(db) {
   const moviesList = db.getMovies().value();
 
@@ -12,8 +10,8 @@ function generateNewId(db) {
   return newId;
 }
 
-function findMovieById(id) {
-  const moviesList = getMovies();
+function findMovieById(db, id) {
+  const moviesList = db.getMovies();
   const movieWithId = moviesList.find({ id: Number(id) });
   return movieWithId;
 }
