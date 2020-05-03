@@ -51,6 +51,8 @@ function createDb() {
   return db;
 }
 
+const moviesDb = createDb();
+
 function generateNewId() {
   const moviesList = getMovies().value();
 
@@ -63,4 +65,4 @@ function generateNewId() {
   return newId;
 }
 
-module.exports = { createDb };
+module.exports = { moviesDb };
