@@ -30,11 +30,11 @@ function createDb() {
     }
   };
 
-  return db;
-}
+  db._.prototype.getMovies = function () {
+    return this.read().get('movies');
+  };
 
-function getMovies() {
-  return createDb().read().get('movies');
+  return db;
 }
 
 function generateNewId() {
@@ -49,4 +49,4 @@ function generateNewId() {
   return newId;
 }
 
-module.exports = { createDb, getMovies };
+module.exports = { createDb };
