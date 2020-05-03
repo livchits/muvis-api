@@ -8,33 +8,33 @@ function createDb() {
 
   db.defaults({ movies: [] }).write();
 
+  db._.prototype.addMovie = function (movie) {
+    const { title, date, overview, rate, genres, poster, backdrop, id } = movie;
+
+    const newMovie = {
+      title,
+      date,
+      overview,
+      rate: Number(rate),
+      genres,
+      poster,
+      backdrop,
+      id: id || generateNewId(db),
+    };
+
+    if (validate(newMovie)) {
+      db.get('movies').push(newMovie).write();
+      return newMovie;
+    } else {
+      console.error(validate.errors);
+    }
+  };
+
   return db;
 }
 
-function addMovie(db, { title, date, overview, rate, genres, id }) {
-  const newMovie = {
-    title,
-    date,
-    overview,
-    rate: Number(rate),
-    genres,
-    id: id || generateNewId()
-  };
-
-  if (validate(newMovie)) {
-    db.get('movies')
-      .push(newMovie)
-      .write();
-    return newMovie;
-  } else {
-    console.error(validate.errors);
-  }
-}
-
 function getMovies() {
-  return createDb()
-    .read()
-    .get('movies');
+  return createDb().read().get('movies');
 }
 
 function generateNewId() {
@@ -49,4 +49,4 @@ function generateNewId() {
   return newId;
 }
 
-module.exports = { createDb, addMovie, getMovies };
+module.exports = { createDb, getMovies };
