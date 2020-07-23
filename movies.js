@@ -91,6 +91,21 @@ function getMoviesSortedBy(db, criteria) {
   return moviesList.sort(sortBy[criteria]);
 }
 
+function getQuery(db, query) {
+  const [criteria] = Object.keys(query);
+  const [value] = Object.values(query);
+
+  if (criteria === 'year') {
+    return getMoviesWithYear(db, value);
+  }
+  if (criteria === 'genre') {
+    return getMoviesWithGenre(db, value);
+  }
+  if (criteria === 'sortBy') {
+    return getMoviesSortedBy(db, value);
+  }
+}
+
 module.exports = {
   findMovieById,
   generateNewId,
