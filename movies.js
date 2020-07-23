@@ -40,4 +40,22 @@ function getYears(db) {
   return yearsUnique.sort((a, b) => a - b);
 }
 
-module.exports = { findMovieById, generateNewId, getGenres, getYears };
+function getRates(db) {
+  const moviesList = db.getMovies().value();
+  const ratesList = moviesList.reduce((rates, movie) => {
+    rates.push(movie.rate);
+    return rates;
+  }, []);
+
+  const ratesNumbers = ratesList.map((rate) => Number(rate));
+  const ratesUnique = Array.from(new Set(ratesNumbers));
+  return ratesUnique.sort((a, b) => a - b);
+}
+
+module.exports = {
+  findMovieById,
+  generateNewId,
+  getGenres,
+  getYears,
+  getRates,
+};
