@@ -2,9 +2,7 @@ import { capitalize } from './utils';
 
 function generateNewId(db) {
   const moviesList = db.getMovies().value();
-
   const moviesIds = moviesList.map((movie) => movie.id);
-
   const newId = Math.max(...moviesIds) + 1;
   return newId;
 }
@@ -17,11 +15,9 @@ function findMovieById(db, id) {
 
 function getGenres(db) {
   const moviesList = db.getMovies().value();
-
   const genresList = moviesList.reduce((genres, movie) => {
     return genres.concat(movie.genres);
   }, []);
-
   const genresUnique = Array.from(new Set(genresList));
   const genresUniqueLowerCase = genresUnique.map((genre) => genre.toLowerCase); //necesario si hay inconsistencias por las mayúsculas
   return genresUniqueLowerCase.sort((a, b) => a.localeCompare(b));
@@ -57,7 +53,6 @@ function getMoviesWithGenre(db, genre) {
   const moviesWithGenre = moviesList.filter((movie) =>
     movie.genres.includes(genreToSearch)
   );
-
   return moviesWithGenre;
 }
 
