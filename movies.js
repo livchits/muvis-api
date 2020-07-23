@@ -3,10 +3,7 @@ import { capitalize } from './utils';
 function generateNewId(db) {
   const moviesList = db.getMovies().value();
 
-  const moviesIds = moviesList.reduce((ids, movie) => {
-    ids.push(movie.id);
-    return ids;
-  }, []);
+  const moviesIds = moviesList.map((movie) => movie.id);
 
   const newId = Math.max(...moviesIds) + 1;
   return newId;
@@ -25,32 +22,24 @@ function getGenres(db) {
     return genres.concat(movie.genres);
   }, []);
 
-  const genresLowerCase = genresList.map((genre) => genre.toLowerCase()); //necesario si hay inconsistencias por las mayúsculas
-  const genresUnique = Array.from(new Set(genresLowerCase));
-  return genresUnique.sort((a, b) => a.localeCompare(b));
+  const genresUnique = Array.from(new Set(genresList));
+  const genresUniqueLowerCase = genresUnique.map((genre) => genre.toLowerCase); //necesario si hay inconsistencias por las mayúsculas
+  return genresUniqueLowerCase.sort((a, b) => a.localeCompare(b));
 }
 
 function getYears(db) {
   const moviesList = db.getMovies().value();
-  const datesList = moviesList.reduce((years, movie) => {
-    years.push(movie.date);
-    return years;
-  }, []);
-
-  const yearsList = datesList.map((date) => new Date(date).getFullYear());
+  const yearsList = moviesList.map((movie) =>
+    new Date(movie.date).getFullYear()
+  );
   const yearsUnique = Array.from(new Set(yearsList));
-  return yearsUnique.sort((a, b) => a - b);
+  return yearsUnique.sort((yearOne, yearTwo) => yearOne - yearTwo);
 }
 
 function getRates(db) {
   const moviesList = db.getMovies().value();
-  const ratesList = moviesList.reduce((rates, movie) => {
-    rates.push(movie.rate);
-    return rates;
-  }, []);
-
-  const ratesNumbers = ratesList.map((rate) => Number(rate));
-  const ratesUnique = Array.from(new Set(ratesNumbers));
+  const ratesList = moviesList.map((movie) => Number(movie.rate));
+  const ratesUnique = Array.from(new Set(ratesList));
   return ratesUnique.sort((a, b) => a - b);
 }
 
