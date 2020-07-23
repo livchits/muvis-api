@@ -1,3 +1,5 @@
+import { capitalize } from './utils';
+
 function generateNewId(db) {
   const moviesList = db.getMovies().value();
 
@@ -60,6 +62,16 @@ function getMoviesWithYear(db, year) {
   return moviesWithYear;
 }
 
+function getMoviesWithGenre(db, genre) {
+  const genreToSearch = capitalize(genre);
+  const moviesList = db.getMovies().value();
+  const moviesWithGenre = moviesList.filter((movie) =>
+    movie.genres.includes(genreToSearch)
+  );
+
+  return moviesWithGenre;
+}
+
 module.exports = {
   findMovieById,
   generateNewId,
@@ -67,4 +79,5 @@ module.exports = {
   getYears,
   getRates,
   getMoviesWithYear,
+  getMoviesWithGenre,
 };
