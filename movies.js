@@ -52,10 +52,19 @@ function getRates(db) {
   return ratesUnique.sort((a, b) => a - b);
 }
 
+function getMoviesWithYear(db, year) {
+  const moviesList = db.getMovies().value();
+  const moviesWithYear = moviesList.filter(
+    (movie) => Number(year) === new Date(movie.date).getFullYear()
+  );
+  return moviesWithYear;
+}
+
 module.exports = {
   findMovieById,
   generateNewId,
   getGenres,
   getYears,
   getRates,
+  getMoviesWithYear,
 };
