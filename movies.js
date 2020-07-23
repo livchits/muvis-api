@@ -72,6 +72,25 @@ function getMoviesWithGenre(db, genre) {
   return moviesWithGenre;
 }
 
+const sortBy = {
+  title: function (movieOne, movieTwo) {
+    return movieOne.title.localeCompare(movieTwo.title);
+  },
+  year: function (movieOne, movieTwo) {
+    const movieOneYear = new Date(movieOne.date).getFullYear();
+    const movierTwoYear = new Date(movieTwo.date).getFullYear();
+    return movieOneYear - movierTwoYear;
+  },
+  rate: function (movieOne, movieTwo) {
+    return Number(movieOne.rate) - Number(movieTwo.rate);
+  },
+};
+
+function getMoviesSortedBy(db, criteria) {
+  const moviesList = db.getMovies().value();
+  return moviesList.sort(sortBy[criteria]);
+}
+
 module.exports = {
   findMovieById,
   generateNewId,
