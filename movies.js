@@ -16,4 +16,16 @@ function findMovieById(db, id) {
   return movieWithId;
 }
 
-module.exports = { findMovieById, generateNewId };
+function getGenres(db) {
+  const moviesList = db.getMovies().value();
+
+  const genresList = moviesList.reduce((genres, movie) => {
+    return genres.concat(movie.genres);
+  }, []);
+
+  const genresLowerCase = genresList.map((genre) => genre.toLowerCase()); //necesario si hay inconsistencias por las mayúsculas
+  const genresUnique = Array.from(new Set(genresLowerCase));
+  return genresUnique.sort((a, b) => a.localeCompare(b));
+}
+
+module.exports = { findMovieById, generateNewId, getGenres };
