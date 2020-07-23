@@ -28,4 +28,16 @@ function getGenres(db) {
   return genresUnique.sort((a, b) => a.localeCompare(b));
 }
 
-module.exports = { findMovieById, generateNewId, getGenres };
+function getYears(db) {
+  const moviesList = db.getMovies().value();
+  const datesList = moviesList.reduce((years, movie) => {
+    years.push(movie.date);
+    return years;
+  }, []);
+
+  const yearsList = datesList.map((date) => new Date(date).getFullYear());
+  const yearsUnique = Array.from(new Set(yearsList));
+  return yearsUnique.sort((a, b) => a - b);
+}
+
+module.exports = { findMovieById, generateNewId, getGenres, getYears };
