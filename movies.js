@@ -112,6 +112,5 @@ module.exports = {
   getGenres,
   getYears,
   getRates,
-  getMoviesWithYear,
-  getMoviesWithGenre,
+  getQuery,
 };
