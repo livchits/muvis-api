@@ -49,8 +49,6 @@ function getMoviesData() {
       return selectMoviesData(movies, genresList);
     })
     .then((data) => {
-      //console.log(data.length);
-      //console.log(data[0]);
       data.forEach((movie) => addMovie(movie));
     })
     .catch((e) => console.log('error', e));
