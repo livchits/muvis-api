@@ -54,4 +54,4 @@ function createDb() {
 
 const moviesDb = createDb();
 
-module.exports = { moviesDb };
+module.exports = moviesDb;
