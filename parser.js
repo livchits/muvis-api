@@ -1,5 +1,7 @@
+const { formatDate } = require('./utils');
+
 function selectMoviesData(movies, genresIdsAndNamesList) {
-  const dataSelected = movies.map(movie => {
+  const dataSelected = movies.map((movie) => {
     const {
       id,
       original_title: title,
@@ -8,7 +10,7 @@ function selectMoviesData(movies, genresIdsAndNamesList) {
       genre_ids: genres,
       poster_path: poster,
       backdrop_path: backdrop,
-      vote_average: rate
+      vote_average: rate,
     } = movie;
 
     return {
@@ -19,7 +21,7 @@ function selectMoviesData(movies, genresIdsAndNamesList) {
       genres: mapIdsToGenres(genres, genresIdsAndNamesList),
       poster: `https://image.tmdb.org/t/p/w1280${poster}`,
       backdrop: `https://image.tmdb.org/t/p/w1280${backdrop}`,
-      rate
+      rate,
     };
   });
 
@@ -27,8 +29,8 @@ function selectMoviesData(movies, genresIdsAndNamesList) {
 }
 
 function mapIdsToGenres(genresIds, genresIdsAndNamesList) {
-  const genresNames = genresIds.map(id => {
-    genresIdsAndNamesList.forEach(genre => {
+  const genresNames = genresIds.map((id) => {
+    genresIdsAndNamesList.forEach((genre) => {
       if (genre.id === id) {
         id = genre.name;
       }
