@@ -1,5 +1,7 @@
 const got = require('got');
 const dotenv = require('dotenv');
+const { selectMoviesData } = require('./parser');
+const { addMovie } = require('./db');
 
 dotenv.config();
 
@@ -40,5 +42,18 @@ async function queryApi(...requests) {
   }
 }
 
-module.exports = { getApiMovies, getGenres, queryApi };
-//module.exports = queryApi(getMovies(1, []), getGenres());
+function getMoviesData() {
+  return queryApi(getApiMovies(1, []), getGenres()) //no hace falta asignarlo a una variable y exportarlo luego
+    .then((responses) => {
+      const [movies, genresList] = responses;
+      return selectMoviesData(movies, genresList);
+    })
+    .then((data) => {
+      //console.log(data.length);
+      //console.log(data[0]);
+      data.forEach((movie) => addMovie(movie));
+    })
+    .catch((e) => console.log('error', e));
+}
+
+module.exports = { getMoviesData };
