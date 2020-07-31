@@ -40,4 +40,4 @@ function mapIdsToGenres(genresIds, genresIdsAndNamesList) {
   return genresNames;
 }
 
-module.exports = { selectMoviesData };
+module.exports = { selectMoviesData, mapIdsToGenres };
