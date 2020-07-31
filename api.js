@@ -43,7 +43,7 @@ async function queryApi(...requests) {
 }
 
 function getMoviesData() {
-  return queryApi(getApiMovies(1, []), getGenres()) //no hace falta asignarlo a una variable y exportarlo luego
+  return queryApi(getApiMovies(1, []), getGenres())
     .then((responses) => {
       const [movies, genresList] = responses;
       return selectMoviesData(movies, genresList);
