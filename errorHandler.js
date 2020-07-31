@@ -1,5 +1,4 @@
 const express = require('express');
-const router = express.Router();
 
 const app = express();
 
@@ -11,7 +10,7 @@ function errorHandler(err, req, res, next) {
      if we're in development mode, include stack trace (full error object)
      otherwise, it's an empty object so the user doesn't see all of that
     */
-    error: app.get('env') === 'development' ? err : {}
+    error: app.get('env') === 'development' ? err : {},
   });
 }
 
