@@ -42,16 +42,13 @@ async function queryApi(...requests) {
   }
 }
 
-function getMoviesData() {
-  return queryApi(getApiMovies(1, []), getGenres())
-    .then((responses) => {
-      const [movies, genresList] = responses;
-      return selectMoviesData(movies, genresList);
-    })
-    .then((data) => {
-      data.forEach((movie) => addMovie(movie));
-    })
-    .catch((e) => console.log('error', e));
+async function getMoviesData() {
+  try {
+    const moviesData = await queryApi(getApiMovies(1, []), getGenres());
+    return moviesData;
+  } catch (error) {
+    console.error(error.message);
+  }
 }
 
 module.exports = { getMoviesData };
