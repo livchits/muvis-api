@@ -2,6 +2,7 @@ const low = require('lowdb');
 const FileSync = require('lowdb/adapters/FileSync');
 const validate = require('./ajv');
 const { generateNewId } = require('./movies');
+const { formatDate } = require('./utils');
 
 function createDb() {
   const adapter = new FileSync('movies.json');
@@ -40,10 +41,12 @@ function createDb() {
   };
 
   db._.prototype.updateMovie = function (newMovieData, movieToUpdate) {
+    newMovieData.date = formatDate(newMovieData.date);
     const keysToUpdate = Object.keys(newMovieData); //array de las props a actualizar
+    const movieDataToUpdate = movieToUpdate.value();
     keysToUpdate.forEach((key) => {
       this.get('movies')
-        .find({ [key]: movieToUpdate[key] })
+        .find({ [key]: movieDataToUpdate[key] })
         .assign({ [key]: newMovieData[key] })
         .write();
     });
