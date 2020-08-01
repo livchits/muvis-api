@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const moviesDb = require('../db');
-const { getQuery } = require('../movies');
+const { getQuery, getGenres, getYears, getRates } = require('../movies');
 const { validationResult } = require('express-validator');
 const { postValidation } = require('../validations');
 
@@ -30,6 +30,18 @@ router
     const newMovie = moviesDb.addMovie(req.body);
     res.json(newMovie);
   });
+
+router.route('/genres').get((req, res) => {
+  res.json(getGenres(moviesDb));
+});
+
+router.route('/years').get((req, res) => {
+  res.json(getYears(moviesDb));
+});
+
+router.route('/rates').get((req, res) => {
+  res.json(getRates(moviesDb));
+});
 
 router.route('/:id').get((req, res, next) => {
   const { id } = req.params;
