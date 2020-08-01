@@ -8,7 +8,7 @@ const dbPath = path.join(__dirname, '/movies.json');
 
 async function seedDB(req, resp, next) {
   //the db doesn't exists or is empty
-  if (fileNotExists(dbPath) || moviesDB.get('movies').isEmpty().value()) {
+  if (fileNotExists(dbPath) || moviesDB.isDbEmpty()) {
     console.log('Seding the movies database...');
     const [movies, genresList] = await getMoviesData();
     const parseredMoviesData = selectMoviesData(movies, genresList);
