@@ -9,7 +9,7 @@ function generateNewId(db) {
 
 function findMovieById(db, id) {
   const moviesList = db.getMovies();
-  const movieWithId = moviesList.find({ id: Number(id) });
+  const movieWithId = moviesList.find({ id: Number(id) }).value();
   return movieWithId;
 }
 
