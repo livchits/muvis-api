@@ -1,3 +1,5 @@
+const { existsSync } = require('fs');
+
 function formatDate(dateString) {
   const options = { month: 'long', day: 'numeric', year: 'numeric' };
   const date = new Date(dateString);
@@ -12,4 +14,8 @@ function capitalize(word) {
   return capitalizeWord;
 }
 
-module.exports = { capitalize, formatDate };
+function fileNotExists(filePath) {
+  return !existsSync(filePath);
+}
+
+module.exports = { capitalize, formatDate, fileNotExists };
