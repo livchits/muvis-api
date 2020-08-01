@@ -1,7 +1,5 @@
 const got = require('got');
 const dotenv = require('dotenv');
-const { selectMoviesData } = require('./parser');
-const { addMovie } = require('./db');
 
 dotenv.config();
 
@@ -18,7 +16,7 @@ async function getApiMovies(page, array) {
     }
     return array;
   } catch (error) {
-    console.log(error.response.body);
+    console.error(error.response.body);
   }
 }
 
@@ -29,7 +27,7 @@ async function getGenres() {
     });
     return body.genres;
   } catch (error) {
-    console.log(error.response.body);
+    console.error(error.response.body);
   }
 }
 
@@ -38,7 +36,7 @@ async function queryApi(...requests) {
     const responses = await Promise.all(requests);
     return responses;
   } catch (error) {
-    console.log(error.message);
+    console.error(error.message);
   }
 }
 
