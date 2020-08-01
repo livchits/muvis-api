@@ -4,6 +4,7 @@ const morgan = require('morgan');
 const routes = require('./routes');
 const helmet = require('helmet');
 const errorHandler = require('./errorHandler');
+const seedDB = require('./seedDB');
 
 dotenv.config();
 
@@ -27,7 +28,7 @@ app.use(helmet());
 
 app.use(express.json());
 
-//app.use(seedDb)
+app.use(seedDB);
 
 app.use('/api/muvis', routes);
 
