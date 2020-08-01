@@ -50,7 +50,7 @@ function createDb() {
   };
 
   db._.prototype.isDbEmpty = function () {
-    return this.get('movies').isEmpty().value();
+    return db.get('movies').isEmpty().value();
   };
 
   return db;
