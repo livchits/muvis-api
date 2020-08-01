@@ -55,7 +55,7 @@ router
     const { id } = req.params;
     const movie = findMovieById(moviesDb, id);
     if (movie) {
-      res.json(movie);
+      return res.json(movie);
     }
     const err = new Error(`404 - The movie with the id ${id} was not found`);
     err.status = 404;
@@ -81,7 +81,7 @@ router
       return res.json({ message: 'ok' });
     }
     const newMovie = moviesDb.addMovie(req.body);
-    res.json(newMovie);
+    return res.json(newMovie);
   })
   .delete((req, res, next) => {
     const id = Number(req.params.id);
