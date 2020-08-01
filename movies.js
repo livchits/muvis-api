@@ -76,7 +76,8 @@ function getMoviesSortedBy(db, criteria) {
 }
 
 function getQuery(db, query) {
-  const [criteria] = Object.keys(query);
+  const [criteriaReceived] = Object.keys(query);
+  const criteria = criteriaReceived.toLowerCase();
   const [value] = Object.values(query);
 
   if (criteria === 'year') {
@@ -85,7 +86,7 @@ function getQuery(db, query) {
   if (criteria === 'genre') {
     return getMoviesWithGenre(db, value);
   }
-  if (criteria === 'sortBy') {
+  if (criteria === 'sortby') {
     return getMoviesSortedBy(db, value);
   }
 }
