@@ -36,7 +36,7 @@ function createDb() {
     return this.read().get('movies');
   };
 
-  db._.prototype.removeMovies = function (id) {
+  db._.prototype.removeMovie = function (id) {
     this.get('movies').remove({ id: id }).write();
   };
 
