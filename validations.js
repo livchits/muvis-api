@@ -2,7 +2,7 @@ const { isValidDate } = require('./ajv');
 const { check } = require('express-validator');
 const { capitalize, formatDate } = require('./utils');
 const db = require('./db');
-const { getGenres } = require('./movies');
+const { getGenres } = require('./queryMovies');
 
 const postValidation = [
   check('title')
