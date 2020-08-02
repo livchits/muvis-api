@@ -1,6 +1,6 @@
 const low = require('lowdb');
 const FileSync = require('lowdb/adapters/FileSync');
-const { validate } = require('./ajv');
+const { validate } = require('./jsonValidation');
 const { generateNewId } = require('./queryMovies');
 const { formatDate } = require('./utils');
 
