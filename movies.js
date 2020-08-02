@@ -1,4 +1,4 @@
-import { capitalize } from './utils';
+const { capitalize } = require('./utils');
 
 function generateNewId(db) {
   const moviesList = db.getMovies().value();
