@@ -11,7 +11,7 @@ dotenv.config();
 const { PORT = 3000, HOSTNAME = 'localhost' } = process.env;
 
 const app = express();
-
+/*
 if (process.env.NODE_ENV === 'production') {
   app.use(
     morgan('common', {
@@ -23,7 +23,7 @@ if (process.env.NODE_ENV === 'production') {
 } else {
   app.use(morgan('dev'));
 }
-
+*/
 app.use(helmet());
 
 app.use(express.json());
