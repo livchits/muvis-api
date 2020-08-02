@@ -1,28 +1,8 @@
 const { isValidDate } = require('./ajv');
 const { check } = require('express-validator');
 const { capitalize, formatDate } = require('./utils');
-
-const genres = [
-  'action',
-  'adventure',
-  'animation',
-  'comedy',
-  'crime',
-  'documentary',
-  'drama',
-  'family',
-  'fantasy',
-  'history',
-  'horror',
-  'music',
-  'mistery',
-  'romance',
-  'science fiction',
-  'tv movie',
-  'thriller',
-  'war',
-  'western',
-];
+const db = require('./db');
+const { getGenres } = require('./movies');
 
 const postValidation = [
   check('title')
@@ -51,7 +31,7 @@ const postValidation = [
     .custom(
       (data) =>
         Array.isArray(data) &&
-        data.every((genre) => genres.includes(genre.toLowerCase()))
+        data.every((genre) => getGenres(db).includes(genre.toLowerCase()))
     )
     .customSanitizer((value) => value.map((genre) => capitalize(genre)))
     .withMessage('Movie genre is required.'),
@@ -88,7 +68,7 @@ const putValidation = [
     .custom(
       (data) =>
         Array.isArray(data) &&
-        data.every((genre) => genres.includes(genre.toLowerCase()))
+        data.every((genre) => getGenres(db).includes(genre.toLowerCase()))
     )
     .customSanitizer((value) => value.map((genre) => capitalize(genre)))
     .withMessage('Movie genre is required.'),
