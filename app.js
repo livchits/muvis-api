@@ -8,7 +8,7 @@ const seedDB = require('./seedDB');
 
 dotenv.config();
 
-const { PORT = 8001, HOSTNAME = 'localhost' } = process.env;
+const { PORT = 3000, HOSTNAME = 'localhost' } = process.env;
 
 const app = express();
 
