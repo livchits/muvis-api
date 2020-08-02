@@ -1,4 +1,4 @@
-const { isValidDate } = require('./ajv');
+const { isValidDate } = require('./jsonValidation');
 const { check } = require('express-validator');
 const { capitalize, formatDate } = require('./utils');
 const db = require('./db');
