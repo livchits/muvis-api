@@ -1,12 +1,12 @@
 # Muvis API
 
-This API is an excersice to put in practice the REST concepts and create an app with Express in Node. In first place, the server consume [The Movie DB API](https://www.themoviedb.org/documentation/api) to generate a new database of movies. Then, the app expose some endpoints to make CRUD operations with the data.
+This API is an [excersice](https://github.com/undefinedschool/project-5-muvis-api) to put in practice the REST concepts and create an app with Express in Node. In first place, the server consumes [The Movie DB API](https://www.themoviedb.org/documentation/api) to generate a new database of movies. Then, the app expose some endpoints to make CRUD operations with the data.
 
 ## Use of the project
 
-The API can be use through this URL:
+The API can be use at this URL:
 
-To install it in your one server, you have to clone this repositorie:
+To install it in your own server, you have to clone this repositorie:
 
 `git clone ...`
 
@@ -17,7 +17,7 @@ cd muvis-api
 npm install
 ```
 
-Create an `.env` and edit it like this:
+Create an `.env` file and edit it like this:
 
 ```
 HOSTNAME=localhost
@@ -27,7 +27,7 @@ TOP_RATED_URL=https://api.themoviedb.org/3/movie/top_rated?api_key=
 GENRES_URL=https://api.themoviedb.org/3/genre/movie/list?api_key=
 ```
 
-And don't forget to replace the `API_KEY` value with your key. To get one in The Movie DB site you have to create an account there.
+Don't forget to replace the `API_KEY` value with your key. To get one in The Movie DB site you have to create an account there.
 
 Finally run:
 
