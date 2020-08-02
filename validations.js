@@ -31,7 +31,7 @@ const postValidation = [
     .custom(
       (data) =>
         Array.isArray(data) &&
-        data.every((genre) => getGenres(db).includes(genre.toLowerCase()))
+        data.every((genre) => getGenres(db).includes(capitalize(genre)))
     )
     .customSanitizer((value) => value.map((genre) => capitalize(genre)))
     .withMessage('Movie genre is required.'),
@@ -68,7 +68,7 @@ const putValidation = [
     .custom(
       (data) =>
         Array.isArray(data) &&
-        data.every((genre) => getGenres(db).includes(genre.toLowerCase()))
+        data.every((genre) => getGenres(db).includes(capitalize(genre)))
     )
     .customSanitizer((value) => value.map((genre) => capitalize(genre)))
     .withMessage('Movie genre is required.'),
