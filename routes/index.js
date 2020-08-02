@@ -9,7 +9,7 @@ const {
   findMovieById,
 } = require('../movies');
 const { validationResult } = require('express-validator');
-const { postValidation, putValidation } = require('../validations');
+const { postValidation, putValidation } = require('../dataValidations');
 
 router
   .route('/')
