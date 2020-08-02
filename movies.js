@@ -18,9 +18,8 @@ function getGenres(db) {
   const genresList = moviesList.reduce((genres, movie) => {
     return genres.concat(movie.genres);
   }, []);
-  const genresUnique = Array.from(new Set(genresList));
-  const genresUniqueLowerCase = genresUnique.map((genre) => genre.toLowerCase); //necesario si hay inconsistencias por las mayúsculas
-  return genresUniqueLowerCase.sort((a, b) => a.localeCompare(b));
+  const genresUnique = [...new Set(genresList)];
+  return genresUnique.sort((a, b) => a.localeCompare(b));
 }
 
 function getYears(db) {
