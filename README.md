@@ -4,7 +4,7 @@ This API is an [excercise](https://github.com/undefinedschool/project-5-muvis-ap
 
 ## Use of the project
 
-The API can be test at this URL: https://afternoon-hollows-27883.herokuapp.com/api/
+The API can be use at this URL: https://muvis-api.herokuapp.com/api/
 
 To install it in your own server, you have to clone this repositorie:
 
