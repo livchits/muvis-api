@@ -6,9 +6,9 @@ This API is an [excercise](https://github.com/undefinedschool/project-5-muvis-ap
 
 The API can be use at this URL: https://muvis-api.herokuapp.com/api/
 
-To install it in your own server, you have to clone this repositorie:
+To install it in your own server, you have to clone this repository:
 
-`git clone ...`
+`git clone https://github.com/livchits/muvis-api.git`
 
 Go to the project's directory and install the dependencies:
 
