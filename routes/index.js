@@ -7,7 +7,7 @@ const {
   getYears,
   getRates,
   findMovieById,
-} = require('../movies');
+} = require('../queryMovies');
 const { validationResult } = require('express-validator');
 const { postValidation, putValidation } = require('../dataValidations');
 
