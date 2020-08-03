@@ -1,10 +1,10 @@
 # Muvis API
 
-This API is an [excersice](https://github.com/undefinedschool/project-5-muvis-api) to put in practice the REST concepts and create an app with Express in Node. In first place, the server consumes [The Movie DB API](https://www.themoviedb.org/documentation/api) to generate a new database of movies. Then, the app expose some endpoints to make CRUD operations with the data.
+This API is an [excercise](https://github.com/undefinedschool/project-5-muvis-api) to put in practice the REST concepts and create an app with Express in Node. In first place, the server consumes [The Movie DB API](https://www.themoviedb.org/documentation/api) to generate a new database of movies. Then, the app expose some endpoints to make CRUD operations with the data.
 
 ## Use of the project
 
-The API can be use at this URL:
+The API can be use at this URL: https://muvis-api.herokuapp.com/api/
 
 To install it in your own server, you have to clone this repositorie:
 
