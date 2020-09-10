@@ -5,6 +5,7 @@ const routes = require('./routes');
 const helmet = require('helmet');
 const errorHandler = require('./errorHandler');
 const seedDB = require('./seedDB');
+const cors = require('cors');
 
 dotenv.config();
 
@@ -25,6 +26,8 @@ if (process.env.NODE_ENV === 'production') {
 }
 */
 app.use(helmet());
+
+app.use(cors());
 
 app.use(express.json());
 
